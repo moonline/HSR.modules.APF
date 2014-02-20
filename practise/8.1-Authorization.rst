@@ -1,0 +1,58 @@
+=========================
+8.1 Authorization Pattern
+=========================
+
+
+Summary
+=======
+
+Beschreibt, wer authorisiert ist, auf spezifische Resourcen in einem System zuzugreifen.
+Dabei wird für jede aktive Entität einzeln beschrieben, wie und welche Resoucen zugegriffen werden dürfen.
+
+
+Context
+=======
+
+Umgebungen mit Resourcen, deren Zugriff kontrolliert werden muss.
+
+
+Problem
+=======
+
+Schützenswerte Resourcen müssen über einen einheitlichen Mechanismus vor unerlaubtem Zugriff geschützt werden, um zu verhindern, das Benutzer oder Prozesse auf vertrauliche Resoucen zugreifen -> Probleme mit Vertraulichkeit und Integrität.
+
+* Der Zugriff muss vom Resourcentyp abhängen
+* Die Struktur muss flexibel genug sein, um verschiedene Typen von Entitäten, Resourcen und Rechten hinzuzufügen
+* Es sollte einfach sein, die Rechte einer Entität zu verändern
+
+
+Solution
+========
+
+::
+
+	(User, Prozesse, ...)           (Resourcen wie File, DB, ...)
+	.---------.                     .------------------.
+	| Subject |                     | ProtectionObject |
+	|---------|                     |------------------|
+	| id      |----------.----------| id               |
+	| name    |          |          | name             |
+	'---------'          |          '------------------'
+	              .------'------.
+	              | Right       |
+	              |-------------|
+	              | accessType  |
+	              | checkRights |
+	              '-------------'
+
+
+Entitäten und Resourcen werden durch eine mit Benutzungsrechten attributierte Beziehung verbunden.
+Sowohl Entitäten, Resourcen wie Rechte lassen sich einfach erweitern um Typen oder Gruppen.
+
+
+Closure
+=======
+
+Das Authorization Pattern stellt eine einfache Struktur zur Verwaltung von Resourcen, Usern und entsprechenden Rechten bereit. Für die Praxis stellt es allerdings eher ein Konzept als ein Lösung dar, da Sowohl Benutzer wie Rechte und Resourcen meistens sowohl Einzelobjekte wie Gruppen bzw. Kaskadierende Gruppen sind.
+
+
