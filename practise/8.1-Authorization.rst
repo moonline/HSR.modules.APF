@@ -56,3 +56,15 @@ Closure
 Das Authorization Pattern stellt eine einfache Struktur zur Verwaltung von Resourcen, Usern und entsprechenden Rechten bereit. Für die Praxis stellt es allerdings eher ein Konzept als ein Lösung dar, da Sowohl Benutzer wie Rechte und Resourcen meistens sowohl Einzelobjekte wie Gruppen bzw. Kaskadierende Gruppen sind.
 
 
+Prüfungsfragen
+==============
+
+a) Das Authorization Pattern ordnet Usern Rechte auf Resourcentypen zu?
+b) Das Predicate Attribute hilft zusätzlich Rechte einzuschränken, z.B. zeitlich.
+
+
+Antworten zu den Fragen
+=======================
+
+a) NEIN. Die Rechte werden auf einzelne Resourcen gesetzt.
+b) JA.

@@ -52,4 +52,15 @@ Closure
 "Role based Access Control" erweitert das "Authorization Pattern" um Rollen. Für die Praxis wird das Extended Model allerdings relevanter sein, da Kaskadierende Rollen sowie Gruppen und Sessionen in den meisten Organisationen benötigt werden um deren Strukturen abzubilden.
 
 
- 
+Prüfungsfragen
+==============
+
+a) Sind Negativrechte ein gutes Konzept?
+b) Role Based Access Controll löst das Problem, das beim Authorization Pattern mit vielen Usern und Resourcen sehr viele Rechte-Objekte angelegt werden?
+
+
+Antworten zu den Fragen
+=======================
+
+a) NEIN, weil damit gleichzeitig Rechte hinzugefügt und entzogen werden können, was sehr unübersichtlich ist.
+b) JA.

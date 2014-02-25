@@ -68,5 +68,131 @@ d) Setting Context: Pattern ist Voraussetzung für Anderes
 
 
 
+2 GoF Patterns
+==============
+
+2.1 Flyweight
+-------------
+
+* Vermeiden von mehrfachem Vorkommen von gleichartigen Objekten, die sich nie ändern. -> Platz sparen.
+* Viele Objekte beschäftigen den GC.
+* Heap wird von allen Threads gemeinsam genutzt
+
+.. figure:: img/2.1.jpg
+
+   Flyweight Pattern (Einfach)
+   
+   
+* Flyweightmanager gibt bei der Anforderung z.B. eines A (Char Object) nicht ein neues sondern ein bestehendes.
+* Das Sharing funktioniert nur, wenn die Objekte konstant sind (sich nicht verändern) (intrinsicState)
+	* C++: member const machen
+	* Java: fields final machen
+* Client ruft nie selbst "new" auf sondern geht immer über den Manager
+
+.. figure:: img/2.2.jpg
+
+   Flyweight extended.
+   
+   
+* UnsharedConcreteFlyweight werden nicht im Pool abgelegt sondern ganz normal verwendet
+* Vorteile: Anzahl Objekte werden reduziert
+* Nachteil: 
+	* Objekte können nicht mehr anhand der Referenz unterschieden werden.
+	* Flyweightmanager wird benötigt
+* Praxisanwendungen: AWT
+
+
+2.2 Memento
+-----------
+
+* Speichern des internen Zustandes eines Objektes zur späteren verwendung.
+* Wie kann dieser interne Zustand verwendet werden ohne die Kapselung zu verletzen?
+* Undo, Versionsverwaltungen
+
+.. figure:: img/2.3.jpg
+
+   Memento Pattern. Saubere Kapselung wird erreicht duch stärkere Kopplung zwischen Memento und Originator.
+
+
+* Alternativen: Objekt klonen, Reflection, Changes protokollieren.
+* Schmalspur-Memento: Erinnerungsinformation reicht nicht aus um das Objekt zurückzusetzen, jedoch um zu erkennen, das es sich geändert hat (Bsp. Java Collection Iterator Change detection).
+* Vorteile: Kapselung bleibt erhalten
+* Nachteile:
+	* Zustand kann ncith direkt inspiziert werden
+	* Vollständige Kopie, keine Diffs
+	* Speicherverbrauch
+
+
+2.3 Mediator
+------------
+
+* Vermittler
+* Wenn's zuviele gibt, die einander benachrichtigen wollen
+* Kommunikation unter Objekten ohne das diese sich gegenseitig kennen müssen
+* Observer ist eine Implementationsform des Mediators
+
+.. figure:: img/2.4.jpg
+
+   Mediator
+
+
+* Mediator kennt alle Kommunikationspartner, Partner kennen sich jedoch nicht untereinander
+* Bei Implementation des Mediators muss man aufpassen, das er nicht zu viele Abhängigkeiten besitzt.
+* Vorteile: 
+	* Einzelne Teilnehmer sind einfach austauschbar (Kopplung reduziert)
+	* Einzelne Partner müssen sich nicht direkt kennen.
+	* Mediator leistet Korrdination (Priorisierung, Filterung)
+	* Zentrale Kontrolle
+* Nachteile:
+	* Soll die Kontrolle verändert werden, muss der Mediator umgebaut werden
+	* Fällt der Mediator aus, ist die Kommunikation down
+
+
+2.4 Visitor
+-----------
+
+Composite Pattern:
+
+::
+
+	      .-----.
+	      | op()| *
+	      |_____|<--------.
+	       ^   ^          |
+	      /     \         |
+	.-----.     .-----.   |
+	| op()|     |op() |<>-'
+	|_____|     |_____|
+
+
+
+* Kindelemente können anstelle parent verwendet werden -> Parent führt Liste mit Childs und rift auf diesen eine Funktion auf.
+* Erweiterung von Funktionalität ist aufwendig beim Composite -> daher Visitor
+
+
+.. note:: Visitor: Kapsle eine auf den Elementen einer Objektstruktur auszuführende Operation als ein Objekt. Das Besuchermuster ermöglicht es Ihnen, eine neue Operation zu definieren, ohne die Klasse der von ihr bearbeiteten Elemente zu ändern
+
+.. figure:: img/2.5.jpg
+
+   Visitor Pattern
+   
+   
+* Visitor lohnt sich nur, wenn sich die Knotentypen kaum ändern.
+* Anwendungsfall: Compilerbau
+
+
+2.5 Command
+-----------
+
+* Kapselung einer Funktion als Objekt
+* Ojekt wird jemand anderem mitgegeben statt direkt ausgeführt
+
+.. figure:: img/2.6.jpg
+
+
+* Vorteile: 
+	* Command Objekte lassen sich speichern und wiederverwenden
+	* 
+
 
 
