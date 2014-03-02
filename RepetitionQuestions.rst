@@ -19,8 +19,8 @@ Wissensfrage, die über den Stoff der Vorlesung hinaus geht.
 
 
 
-1 Patterns
-==========
+1 Patterns Allgemein
+====================
 
 **1.0.1.**
 Was sind Patterns? Was zeichnen sie aus?
@@ -37,6 +37,23 @@ Welche Arten von Patterns gibt es?
 **1.0.5.**
 Kommentieren Sie den Satz: "No Pattern is an Island".
 
+
+2 Patterns
+==========
+
+**2.0.1.**
+Erklären Sie die folgenden Patterns. Nennen Sie zu jedem
+	i) Problemstellung
+	ii) Lösung
+	iii) Vor- / Nachteile
+	iv) Verwandtschaften zu ähnlichen Patterns / Abgrenzung
+	v) Einsatzbeispiele
+	
+a) Flyweight
+b) Memento
+c) Mediator
+d) Visitor
+e) Command
 
 
 
