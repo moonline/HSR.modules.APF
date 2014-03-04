@@ -30,9 +30,9 @@ User wie Daten werden gruppiert und klassifiziert.
 Aufgrund dieser klassifizierung erhält ein User Access oder nicht.
 
 Die Klassifizierung erfolgt durch eine vertrauliche Stelle oder einen vertraulichen Prozess.
-Für neue Elemente wird eine Standardklassifizierung berechnet, aus den Referenzen zu andern Daten und Usern.
+Für neue Elemente wird eine Standardklassifizierung berechnet, aus den Referenzen zu andern Daten und Usern. Diese Beziehung ist als konzeptionelle Verbindung und nicht als effektive Datenverknüpfung zu verstehen.
 
-Eine offene Frage bleibt der Sinn der CanAccess Verbindung, da dies über die Levels bereits abgedeckt wird. 
+Die CanAccess Verbindung zwischen Subject und Data verbindet die Objekte, auf die das Subjekt effektiv zugriff hat (Analog Authorization Pattern). Eine CanAccess Beziehung kann nur aufgebaut werden, wenn die Klassifizierung von Subjekt und Daten zusammenpassen.
 
 
 Closure

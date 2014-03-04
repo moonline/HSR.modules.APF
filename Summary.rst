@@ -184,15 +184,128 @@ Composite Pattern:
 2.5 Command
 -----------
 
+.. image:: img/2.6.jpg
+	:width: 75%
+	:align: left
+	
+
 * Kapselung einer Funktion als Objekt
 * Ojekt wird jemand anderem mitgegeben statt direkt ausgeführt
-
-.. figure:: img/2.6.jpg
-
-
 * Vorteile: 
 	* Command Objekte lassen sich speichern und wiederverwenden
-	* 
+	* Objekt kann an mehreren Stellen verwendet werden
+	* Neue Commands lassen sich einfach hinzuzufügen zur App
+	* Commands können aufgezeichnet und wieder abgespielt werden -> makro, undo
+	
+------------
+
+.. figure:: img/2.7.jpg
+   :width: 75%
+
+   Command Processor
+
+   
+.. figure:: img/2.8.jpg
 
 
+2.6 Patterns, die zusammen vorkommen können
+===========================================
 
+* Visitor und Composite
+* Flyweight und Composite
+* Memento und Command
+
+.. warning:: Mögliche Prüfungsfrage
+
+
+3 Beyond GoF Patterns
+=====================
+
+3.1 Iterator
+============
+
+.. figure:: img/3.1.jpg
+
+* Über Elemente iterieren können ohne deren internen Aufbau zu kennens
+* Iterator muss sehr eng gekoppelt sein mit dem zu iterierenden Objekt, dafür ist Kopplung zum Iterierenden schwach
+
+.. warning:: An Prüfung Code als Iterator erkennen können.
+
+* Robuste Iteration (wenn sich Collection verändert hat) ist schwierig umzusetzen
+* Iteratorobjekt ist entkoppelt und kriegt möglicherweise nicht mit, wenn sich Collection ändert (c++ -> undefined behaviour)
+
+
+3.2 Enumeration Method
+======================
+
+* Teil des Iterator Pattern
+* z.B. .each()
+* An die aufrufende Methode wird ein Command Objekt weitergegeben, das die Iteration übernimmt.
+* Keine Kopplung vom Command Objekt zur Collection
+
+.. figure:: img/3.2.jpg
+
+
+3.3 Batch Method
+================
+
+* Wenn Collection auf Server und Iterator auf CLient -> Problem mit Latenz bei jeder Iteration
+* -> Collection wird in Häppchen übertragen und während lokal iteriert wird bereits das nächste Häppchen nachgeladen
+
+.. image:: img/3.3.jpg
+   :width: 75 %
+   :align: left
+
+.. image:: img/3.4.jpg
+   :width: 75 %
+   :align: left
+
+
+3.4 State
+=========
+
+3.4.1 Objects for States (GoF)
+------------------------------
+
+* Ein Objekt kann sein Verhalten ändern, in dem ein Teil des Verhaltens ausgelagert wird in ein referenziertes Objekt, das ausgetauscht werden kann.
+* Unterschied zu Strategy: Beim State Pattern wechselt die States automatisch, beim Strategy muss man die Strategy wählen
+
+.. image:: img/3.5.jpg
+   :width: 75 %
+   :align: left
+   
+
+* Klassen, die von der State ableiten (a,b,c) besitzen keine eigenen Daten (stateless)
+
+
+2.4.2 Methods for States (Tabellen)
+-----------------------------------
+
+* Alternativen: States lassen sich auch mit Statetables umsetzen
+	* Bsp: Compiler setzt Switch als Sprungtabelle um
+
+.. image:: img/3.6.jpg
+
+* Vorteil: Methoden, die nichts machen können einfach als Null-Object abgelegt werden
+
+.. image:: img/3.7.jpg
+
+
+2.4.3 Collections for States
+----------------------------
+
+* Objekte werden zu Häufchen zugeordnet und darüber entscheidet sich deren Verhalten.
+* -> Zugehörigkeit eintscheidet Verhalten
+
+
+.. important:: Selbstlesestoff zu State
+
+
+4 Frameworks
+============
+
+* OO Klassen, die zusammen arbeiten
+* Erweiterungspunkte
+* FW ist meisst halbfertig -> Erweiterungspunkte
+* Unterschied zu Bibliothek: Framework ruft meinen Code auf, nicht ich rufe die Bibliothek auf
+	* -> Inversion of Control
