@@ -33,6 +33,8 @@ Closure
 
 Für das Ermitteln der minimalen Rechte ist es notwendig, die Abläufe im gesammten System in Form von Use Cases auszuwerten, was sehr aufwendig ist.
 
+Ein grosser Vorteil des Vorgehens ist die Tatsache, das mit dem Kunden sehr einfach über Sicherheitsaspekte der Rollen und deren Zugriffsrechte diskutiert werden kann, da der Kunde über die Use Cases eine sehr klare Vorstellung der Abläufe und benötigten Resourcen erhält.
+
 
 Prüfungsfragen
 ==============

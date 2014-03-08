@@ -54,6 +54,39 @@ b) Memento
 c) Mediator
 d) Visitor
 e) Command
+f) Iterator
+g) Enumeration Method
+h) Batch Method
+i) State Pattern
+	1) Object for States
+	2) Methods for State
+	3) Collections for States
+	
+
+3 Frameworks
+============
+
+**3.0.1.**
+Was bringen Frameworks? Warum werden sie entwickelt und warum sollte man sie einsetzen?
+
+**3.0.2.**
+Was ist ein Framework überhaupt?
+
+**3.0.3.**
+Was ist ein Application Framework?
+
+**3.0.4.**
+Wie unterscheidet sich Framework und Bibliothekt?
+
+**3.0.5.**
+Wie funktionieren Framework Callbacks? Was ist das Konzept dahinter?
+
+**3.0.6.**
+Was sind Hooks? Was erlaubt ihnen das Framework damit?
+
+**3.0.7.**
+Was sind Micro-Frameworks?
+
 
 
 
