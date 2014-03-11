@@ -309,3 +309,195 @@ Composite Pattern:
 * FW ist meisst halbfertig -> Erweiterungspunkte
 * Unterschied zu Bibliothek: Framework ruft meinen Code auf, nicht ich rufe die Bibliothek auf
 	* -> Inversion of Control
+* Framework ist Programmskelett
+
+.
+
+.. image:: img/4.1.jpg
+
+.. figure:: img/4.2.jpg
+
+   Framework mit vorgelagerter Config und selbst impleentierter main Funktion
+
+
+.. warning:: Unterschied Lib / FW und Eigenschaften FW kommt an der Prüfung
+
+
+.. image:: img/4.3.jpg
+
+
+* Entwickler hat weniger Aufwand bei der Nutzung eines Frameworks, da er nur ein Delta und nicht die ganze App entwickeln muss
+* FW besiten Hooks (Erweiterungspunkte)
+
+
+Micro Framework
+---------------
+
+Viele Design Patterns zeigen Micro Frameworks, da sie Erweiterungsmöglichkeiten bieten:
+
+* Template Method
+* Strategy
+* Command Processor
+* Decorator
+
+
+Template Method
+...............
+
+.. image:: img/4.4.jpg
+
+
+Strategy
+........
+
+.. image:: img/4.5.jpg
+
+
+Kombiniert man Strategy mit NullObject, so kann man ein Default Verhalten implementieren für den Fall, das der Benutzer keine Strategy anlegt.
+
+
+Command Processor
+.................
+
+.. image:: img/4.6.jpg
+
+
+
+5 Values
+========
+
+.. figure:: img/5.1.jpg
+   :width: 75 %
+
+   Michael Jackson System Analysis: Unterscheidung von Individuals. Individual bleibt das gleiche, aber sein Verhalten kann sich ändern.
+
+
+* Values Verändern sich nicht (42 sieht immer glech aus, schreibt sich immer gleich und ist immer gleich viel wert), besitzen einen Wert.
+
+
+Beispiele
+---------
+
+* Events
+	* Geburt
+	* Klick
+	* Welcome Bar
+* Entities
+	* Person
+	* Artikel
+	* 
+* Values
+	* 42
+	* Datum
+	* Range
+
+
+Objektkategorisierung
+---------------------
+
+.. image:: img/5.2.jpg
+
+
+* Entity: Identität, Individualität im Vordergrund
+	* Student
+	* File
+* Service
+	* File Writer
+	* Stundenplan eintragen
+	* LokalisierungsAPI Google Maps
+	* Badgelader
+* Value: Identität irelevant, besitzen meist keine, unveränderbar
+	* Integer
+	* String
+* Task: Beispiel Kreditantragsformular (Auftrag an Sachbearbeiter)
+	* Badgeauftrag (über Nacht)
+	* Bestellung (Wenn Fokus auf Ablauf, sonst Entity)
+
+
+Werte
+-----
+
+* Werte ändern sich nicht -> keine Seiteneffekte
+* Exemplare eines Typs, Typ definiert Verhalten
+* Typen können Dimensionen definieren, wie km oder kg
+* Funktionen mappen Argumente auf einen Ausgangsvalue
+
+
+Objekt Charakteristik
+---------------------
+
+.. image:: img/5.3.jpg
+
+
+* State: Attribute/Member
+* Behaviour: Methoden
+* Identität: Referenz auf Objekt
+
+
+Value Objects
+-------------
+
+* Kommen eigentlich nie in UML Diagramm vor, weil die Identität irelevant ist
+* z.B. String
+
+.. note:: Soll eine ISBN Nummer ein eigener Datentyp sein oder String? Wenn interner Aufbau unwichtg: String, wenn Aufbau, Validation und Korrektheit wichtig: ISBN-Type
+
+
+* In OO Sprachen muss dafür gesorgt werden, dass bei Werttypen
+	* Equality den Wert und nicht die Identität vergleicht "hallo".equals("world")
+	* Die Identität keine Rolle spielt
+	* Es darf keine Rolle spielen, ob der Wert kopiert oder per Referenz übergeben wird
+	* Wertklassen haben weder Parent noch Children (meist)
+		* nicht "virtual" oder "final"
+* Identität spielt keine Rolle -> Persistenz ist einfach
+* Über das Netzwerk können nur Werte geschickt werden! Objektversand ist nur eine Emulation
+
+.
+
+.. image:: img/5.4.jpg
+
+
+Whole Value Pattern
+...................
+
+* Nicht nur primitiver Typ, sondern Kapselung als zusammengesetztes Element
+
+.. code-block:: java
+
+	public final class Date {
+	public Date(int year, int month, int day)
+		...
+	}
+	
+	Date right = new Date(year, month, day);
+	
+	// Problem: lässt sich verkehr herum aufrufen
+	Date wrong = new Date(day, month, year);
+	Date alsoWrong = new Date(month, day, year);
+
+
+* Erschaffung eines Types zur Verhinderung, das Zeug zusammengerechnet wird, das man nicht solte (Datum + Distanz)
+
+
+.. code-block:: java
+
+	public final class Year {
+		public static Year valueOf(int year) {return new Year(year);}
+		public Year(int year) { value=year;}
+		public int getValue() { return value;}
+		private final int value;
+	}
+
+	public final class Date {
+		public Date(Year year, Month month, int day)
+			...
+		}
+	}
+	
+	... new Date(Year.valueOf(year), Month.valueOf(month),	day);
+
+
+
+
+
+
