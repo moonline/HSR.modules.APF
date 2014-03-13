@@ -1,0 +1,104 @@
+================================
+9.1 Access Control Requirements
+================================
+
+
+Access Control Security Services erlauben oder verbieten jemandem eine Aktion auf einem Asset auszuführen.
+
+
+Context
+=======
+
+Organisationen verstehen die Planung des Einsatzes von Access Control.
+
+
+Problem
+=======
+
+* Wie können die spezifischen Requirements an einen Access Control Service ermittelt und gewichtet werden?
+* Mit Access Control sind nebst den direkt sichbaren Kosten viele indirekte Kosten Schulung, Support, Arbeitsverzögerungen oder Performanceeinbussen verbunden.
+* AC fügt bestehender Software zusätzliche Komplexität hinzu.
+* AC sollte mit den Sicherheits Policies der Organisation übereinstimmen.
+* Die Administration von Zugriffsrechten kann komplex, aufwändig und fehleranfällig sein.
+* Ein AC Service selbst muss ebenfalls geschützt werden.
+
+
+Solution
+========
+
+Für eine bestimmte Domain wird ein Set von Anforderungen an den Access Control Service definiert. Diese werden ermittelt und gewichtet.
+
+
+Generelle Anforderungen
+.......................
+
+* Unerlaubten Zugriff verbieten
+* Erlaubten Zugriff zulassen
+* Schadensbeschränkung für den Fall eines unerlaubten Zugriffes
+	* Single point of failure verhindern
+	* Sicherheit über mehrere Layer verteilen
+* Schadensbegrenzung für den Fall eines erlaubten geblockten Zugriffs
+	* Sollte wichtige Businessabläufe nicht blockieren
+* Tief halten der Belastung durch Access Control
+	* Ähnliche Aspekte sollten ähnliche Zugriffsmechanismen besitzen
+	* Komplexe Abläufe für User vermeiden
+	* Durch Access Controll entstehenden Overhead tief halten
+* Umsetzen/Durchsetzen der Policies der Organisation
+* Flexibilität
+	* Anpassungen sollten umsetzbar sein ohne
+		* hohe Kosten
+		* aufwändige Administration
+		* Erhöhung der Komplexität der Requirements
+	* Zugriffsrechte und Ausnahmen müssen einfach anpassbar sein
+	* Sowohl Grob- wie Feingranulare Aspekte der Organisationspolicy müssen umsetzbar sein
+	
+
+Umsetzung
+=========
+
+1) Access Domain Spezifizieren
+	* Informationssysteme
+	* Physikalische Gegebenheiten
+	* Netzwerk
+	* Portale
+	* Organisation als Ganzes
+2) Faktoren Set spezifizieren, mit dem die wichtigkeit der einzelnen Anforderungen ermittelt werden kann
+	* Benutzung des Access Control Service
+	* Notwendigkeit von Access Control
+	* Auflagen und Prioritäten der Organisation
+3) Access Control Policy auswählen
+4) Granularitätslevel spezifizieren
+5) Access Control Requirements spezifizieren
+6) Requirements gewichten
+
+
+Closure
+=======
+
+* (+) Zur Auswahl von Access Control Serivices wurde eine klare Basis geschaffen
+* (+) Exakte Analyse der Situation: Verhindert zu restriktive oder schwache Policy Umsetzung
+* (+) Dokumentation der Access Control Strategie / Requirements 
+* (+) Verknüpfung der Policies der Organisation mit der Umsetzung des Access Control Serice
+
+* (-) Zusätzliche Resourcen werden benötigt um das Pattern umzusetzen
+* (-) Gefahr von Over Engineering
+* (-) Dokumentation muss gewartet werden
+* (-) Spezifische Umständer werden durch den generischen Access Control nicht abgedeckt
+* (-) Dokumentation muss gewartet werden
+
+
+Prüfungsfragen
+==============
+
+a) Zu den generellen Anforderungen an einen Access Control Service gehört die Erarbeitung von Vorbeugungen gegen Naturkatastrophen
+b) Die Umsetzung dieses Patterns kann an eine externe Firma ausgelagert werden, sodass keine internen Mitarbeiter dafür abgestellt werden müssen.
+c) Der 1. Schritt bei der Umsetzung ist eine Analyse über mögliche Angriffsszenarien und potentielle Securityleaks.
+
+
+Antworten zu den Fragen
+=======================
+
+a) Nein. Dies ist Aufgabe des Risikomanagements.
+b) Nein. Das Spezifizieren der Anforderungen bedingt eine gut Kenntnis der Domäne, sodass die Involvierung interner Mitarbeiter unumgänglich ist.
+c) Nein. Als erstes wird die Domain spezifiziert.
+

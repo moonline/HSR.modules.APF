@@ -76,7 +76,7 @@ Was ist ein Framework überhaupt?
 Was ist ein Application Framework?
 
 **3.0.4.**
-Wie unterscheidet sich Framework und Bibliothekt?
+Wie unterscheidet sich Framework und Bibliothekt? Skizzieren Sie den Aufruf, bzw. woher ihre Klasse die Schnittstelle hat.
 
 **3.0.5.**
 Wie funktionieren Framework Callbacks? Was ist das Konzept dahinter?
@@ -87,7 +87,54 @@ Was sind Hooks? Was erlaubt ihnen das Framework damit?
 **3.0.7.**
 Was sind Micro-Frameworks?
 
+**3.0.8.**
+Warum sind die Patterns "Template Method", "Strategy", "Command Processor" und "Decoration" "Micro Frameworks"?
 
+
+4 ValueObject
+=============
+
+**4.0.1.**
+Was sind Values?
+
+**4.0.2.**
+Wo ist der Unterschied zwischen Value und Object?
+
+**4.0.3.**
+Michael Jackson definiert "Events", "Entities" und "Values". Erklären Sie die Begriffe und nennen Sie Beispiele.
+
+**4.0.4.**
+Kevlin Henney definiert "Entities", "Services", "Values" und "Tasks" als Objektkategorien. Erklären Sie die Begriffe und nennen Sie Beispiele.
+
+**4.0.5.**
+Erklären Sie die Objektcharakteristik "identity", "state" und "behaviour".
+
+**4.0.6.**
+Was sind Value Objects?
+
+**4.0.7.**
+Ein Buch (Author, Title, ISBN) besitzt eine ISBN Nummer. In welchem Fall ist es sinnvoller, die ISBN Nummer als String abzulegen und in welchem Fall ist es sinnvoller, dafür einen eigenen Typ zu definieren?
+
+**4.0.8.**
+In welchem Fall macht der Einsatz von Value Types in OO Sprachen Sinn?
+
+**4.0.9.**
+Welches Verhalten sollten Values bei equality ( .equals(..) ) aufweisen im Unterschied zu Objekten?
+
+**4.0.10.**
+Warum macht es bei Values keinen Unterschied, ob sie kopiert oder per Referenz übergeben werden?
+
+**4.0.11.**
+Welchen Vorteil bieten Values, was die Persistence angeht?
+
+**4.0.12.**
+Erklären Sie die Value Patterns:
+
+.. image:: img/5.4.jpg
+
+
+**4.0.13.**
+Welches Problem löst "Whole Value"?
 
 
 
