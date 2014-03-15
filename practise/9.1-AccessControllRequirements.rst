@@ -30,12 +30,12 @@ Für eine bestimmte Domain wird ein Set von Anforderungen an den Access Control 
 
 
 Generelle Anforderungen
-.......................
+-----------------------
 
 * Unerlaubten Zugriff verbieten
 * Erlaubten Zugriff zulassen
 * Schadensbeschränkung für den Fall eines unerlaubten Zugriffes
-	* Single point of failure verhindern
+	 Single point of failure verhindern
 	* Sicherheit über mehrere Layer verteilen
 * Schadensbegrenzung für den Fall eines erlaubten geblockten Zugriffs
 	* Sollte wichtige Businessabläufe nicht blockieren
@@ -54,7 +54,7 @@ Generelle Anforderungen
 	
 
 Umsetzung
-=========
+---------
 
 1) Access Domain Spezifizieren
 	* Informationssysteme
@@ -75,16 +75,23 @@ Umsetzung
 Closure
 =======
 
-* (+) Zur Auswahl von Access Control Serivices wurde eine klare Basis geschaffen
-* (+) Exakte Analyse der Situation: Verhindert zu restriktive oder schwache Policy Umsetzung
-* (+) Dokumentation der Access Control Strategie / Requirements 
-* (+) Verknüpfung der Policies der Organisation mit der Umsetzung des Access Control Serice
+✔ Zur Auswahl von Access Control Serivices wurde eine klare Basis geschaffen
 
-* (-) Zusätzliche Resourcen werden benötigt um das Pattern umzusetzen
-* (-) Gefahr von Over Engineering
-* (-) Dokumentation muss gewartet werden
-* (-) Spezifische Umständer werden durch den generischen Access Control nicht abgedeckt
-* (-) Dokumentation muss gewartet werden
+✔ Exakte Analyse der Situation: Verhindert zu restriktive oder schwache Policy Umsetzung
+
+✔ Dokumentation der Access Control Strategie / Requirements 
+
+✔ Verknüpfung der Policies der Organisation mit der Umsetzung des Access Control Serice
+
+✗ Zusätzliche Resourcen werden benötigt um das Pattern umzusetzen
+
+✗ Gefahr von Over Engineering
+
+✗ Dokumentation muss gewartet werden
+
+✗ Spezifische Umständer werden durch den generischen Access Control nicht abgedeckt
+
+✗ Dokumentation muss gewartet werden
 
 
 Prüfungsfragen
