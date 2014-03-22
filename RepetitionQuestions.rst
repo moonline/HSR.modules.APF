@@ -136,6 +136,53 @@ Erklären Sie die Value Patterns:
 **4.0.13.**
 Welches Problem löst "Whole Value"?
 
+**4.0.14.**
+Was ist ein "Value Object"? Wann wird es gebraucht? Wie wird in Java und C++ ein "Value Object" implementiert?
 
+**4.0.15.**
+Erklären Sie "Class Factory Method". Wozu dient das Pattern?
+
+**4.0.16.**
+Wie kann in einer Sprache die auf "Call by Reference" basiert, "Copied Value" umgesetzt werden? Wie kann allgemein verhindert werden, das ein übergebenes Objekt verändert wird? Machen Sie Beispiele für C++ und Java.
+
+**4.0.17.**
+Erklären Sie den Unterschied zwischen "Cloning" und "Prototype".
+
+**4.0.18.**
+Welche Idee verbirgt sich hinter dem Kopierkonstruktor?
+
+**4.0.19.**
+Was sind "Immutable Values" und "Immutable Companion"?
+
+**4.0.20.**
+Was ist "Mutable Companion"?
+
+
+5 Reflection
+============
+
+**5.0.1.**
+Was ist Reflection?
+
+**5.0.2.**
+Welche Probleme löst Reflection?
+
+**5.0.3.**
+Was sind Metaobjects?
+
+**5.0.4.**
+Skizzieren Sie das Reflection Pattern.
+
+**5.0.5.**
+Was sind Introspection und Intercession? Warum bieten viele Sprachen nur Introspection?
+
+**5.0.6.**
+Nennen Sie einige Sprachfeatures wie z.B. Polymorphism, die auf Reflection oder Reflection ähnliche Prozesse setzen.
+
+**5.0.7.**
+Wo werden Reflectionmechanismen eingesetzt? Machen Sie ein Paar Beispiele.
+
+**5.0.8.**
+Was ist ein TypeObject?
 
 

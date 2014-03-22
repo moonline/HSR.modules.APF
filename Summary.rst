@@ -461,6 +461,11 @@ Whole Value Pattern
 ...................
 
 * Nicht nur primitiver Typ, sondern Kapselung als zusammengesetztes Element
+* Man sagt auch noch, was der Wert bedeutet: 
+	* z.B: Was es ist + Masseinheit wird noch dazugespeichert
+	* Bsp: 100: 100 + Km + Distanz -> Distance Klasse
+	* Bsp: 11:  11 + Monat + November -> Month Klasse
+* -> Unterschiedliche Daten lassen sich nicht zusammenrechnen (z.B. Distanzen mit Zeit) -> **Security**
 
 .. code-block:: java
 
@@ -497,7 +502,183 @@ Whole Value Pattern
 	... new Date(Year.valueOf(year), Month.valueOf(month),	day);
 
 
+Value Object
+------------
 
+* Sprachen ohne Values: Objekt bauen, das Values speichert
+* Identität ist irrelevant -> Vergleichsoperatoren müssen Value vergleichen
+	* Java
+		* **equals()**
+		* **hashCode()**
+		* ev. Serializable implementieren
+		* ev. Hilft toString bei komplexem Value (equals nutzt in dem Fall toString -> nicht sooo effizient)
+	* C++
+		* == und != Operator überladen
+
+.. note:: Prüfungsfrage: Vervollständigen Sie die Klassendefinition des Value Object. -> equals und hashCode implementieren.
+
+
+Class Factory Method
+--------------------
+
+* Erzeugung von Hole Value meisst umständlich.
+	.. code-block:: java
+	
+		Date clumsy = new Date(new Year(year), new Month(month), day);
+
+	
+* -> Methode bereitstellen, die das ganze komplett initialisiert:
+	.. code-block:: java
+	
+		Date clumsy = Date.createDate(25,12,2014);
+
+
+Copied Value
+------------
+
+* pass modifiable Objects into methods
+* Cloneable Interface implementieren -> Kopierkonstruktor implementieren
+	* prevents sharing. preserves encapsulation
+* Immutable Value verwenden -> Nur bei Objekten, die häufig abgefragt werden
+	* C++
+		* Bsp: Stringmember zurückgeben, der nicht kopiert und nicht verändert werden kann: Konstref
+			.. code-block:: c++
+			
+				std::string const & getText() const {
+					return text;
+				}
+
+
+Cloning
+-------
+
+* Liefert Kopie, egal was es für ein Typ ist
+* Factory Methode
+* **!= Prototype!** aber Cloning wird gebraucht für Prototype
+
+
+Prototype
+---------
+
+* Nutzt Objektinstanz/Kopie als Defaultwert für neue Objekte
+* Für Objekte mit komplexer interner Konfiguration
+* z.B. Für CommandObjekte, CMS Content Elements
+
+
+Copy Constructor
+----------------
+
+* Kann Probleme mit Unterklassen ergeben, wenn es anstelle Parentobjekt verwendet wird -> Slicing: Was die Unterklasse zusätzlich implementiert wird abgeschnitten
+
+
+Immutable Value
+---------------
+
+* Sharing Probleme -> Objekt muss unveränderlich sein
+* Implementation des Copykonstruktor kann vergessen gehen -> sharing Probleme
+* Automatisch Thread Save
+* z.B. Keys in Hash Map sollten nicht verändert werden
+* -> Alle Fields sind final
+	* Verhindern, das Unterklassen Felder wieder nicht final machen können (final class)
+* C++: 
+	* Constref oder ConstObjekt oder einzelne Constmember
+	* Alle Memeberfunktion const
+
+
+Mutable Companion
+-----------------
+
+* z.B. Nicht veränderbare Strings
+* temporäre Objekte
+
+.. image:: img/5.5.jpg
+   :width: 80 %
+   :align: left
+
+
+.. note:: Prüfung: Java Code lesen und schreiben können
+
+.. note:: Kevlin Henney: http://www.curbralan.com lesen, kommt an Prüfung
+
+
+6 Reflection
+============
+
+* Zur Laufzeit Code nachladen, hinzufügen, ergänzen -> Informationen über Objekte müssen vorliegen
+	* Neuer Code muss eine Beschreibung seiner selbst mitbringen
+* Testing Frameworks sind auf Reflection angewiesen
+* Annotations
+
+
+Warum Reflection?
+-----------------
+
+* Austauschen von Softwareteilen ist schwierig.
+* Komponenten verwenden, die man noch nicht kennt
+* zur Laufzeit
+* Verteilte Systeme: Was läuft auf dem Andern System? Was hat es für Schnittstellen?
+* Compiler weiss viel mehr über die Software als die Software über sich selbst. Compiletimereflection -> Runtimereflection
+* Algorithmen können nicht wiederverwendet werden, weil sie nicht vollständig generalisiert werden können
+
+.
+
+.. image:: img/6.1.jpg
+   :width: 80 %
+   :align: left
+
+
+.. important:: Meta Layer bescheibt, wie Base Layer funktioniert und aufgebaut ist.
+
+* Introspection: Was für Klassen gibts, Fields abfragen, Methoden, ...
+* Intercession: Meta Layer verändern -> Bei Compilergenerierter Reflection nicht möglich
+	* z.B. Klassen zur Laufzeit neue Attribute geben
+	* Verhalten hinzufügen / ersetzen
+* Bsp State
+	.. image:: img/6.2.jpg
+	   :width: 50 %
+
+
+.. figure:: img/6.3.jpg
+   :width: 80 %
+   
+   Meta Object
+
+
+Sprachfeatures, die von Reflection abhängig sind
+------------------------------------------------
+
+* Dynamische Polymorphie
+	* vTables C++
+	* Dynamic loading and invocation
+		* Remote Method invocation, Marshalling, Serialisierung
+	* Dynamic Casts
+	* RDBMS Select From Tables Table
+	* Meta Classes Java / Small Talk
+	* Componentware
+	
+
+Where would one use reflective mechanisms?
+------------------------------------------
+
+.. image:: img/6.4.jpg
+   :width: 80 %
+   :align: left
+
+
+Type Object Design Pattern
+--------------------------
+
+.. image:: img/6.5.jpg
+   :width: 80 %
+   :align: left
+
+
+Bsp: Buchausleih: Buch ist Meta Information, Buchausleihe ist das Buch, das mit einem Benutzer verbunden ist
+
+
+.. image:: img/6.6.jpg
+   :width: 80 %
+   :align: left
 
 
 
