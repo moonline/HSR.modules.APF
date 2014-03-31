@@ -78,8 +78,8 @@ Umsetzung
 	* Benutzung von wiederverwendbaren Sicherheitskomponenten
 	
 
-Conclusion
-----------
+Closure
+=======
 
 ✔ Alle Aspekte der Securitypolicy sind an einem Ort umgesetzt
 
@@ -106,8 +106,8 @@ b) Ein "Check Point" kann "Null Object" implementieren um die Entwicklung des ge
 c) "Check Points" sollten autarke Komponenten sein, die nicht auf andern Modulen basieren.
 
 
-Antworten zu de Fragen
-======================
+Antworten zu den Fragen
+=======================
 
 a) Richtig
 b) Richtig

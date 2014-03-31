@@ -681,4 +681,156 @@ Bsp: Buchausleih: Buch ist Meta Information, Buchausleihe ist das Buch, das mit 
    :align: left
 
 
+.. note:: Meta Layer beschreibt das Verhalten, Baselayer ist das Objekt selbst
+
+.. note:: MOP: Meta Object Protocol (Interface um die Metadaten abfragen/verändern zu können)
+
+
+Limitationen
+............
+
+* Tiefere Effizienz durch Indirections
+	* z.B. Vtables in C++ bei Polymorphismus
+	* In Java dyn. Polymorphie abschalten: final class
+
+Beispiel
+........
+
+* Buchverleih:
+	* Bücher sind Type Objects
+	* Exemplare sind Base-level Objects
+
+
+Property List
+-------------
+
+.. image:: img/6.7.jpg
+
+Vorteile
+........
+
+* Flexible Attribute für Objekte in Form von Key-/Value
+* Dynamisch erweiterbar ohne Programmänderungen
+* Objekte können verändern werden ohne die Identität zu verlieren
+* Organsiation der Properties ist dem Entwickler überlassen (Tree, Hashmap, ...)
+* Universelle Abfrage über Properties unabhängig vom Objekttyp
+
+
+Nachteile
+.........
+
+* Konfusion: Normale Attribute und Attribute in Property List auf Objekt (Zersplitterung des Objektes)
+* Property List sind Strings -> keys sind nur konvention und Property format nicht zwingend
+* Nur die Clients wissen, was die Properties bedeuten (Objekt selbst weis nichts über Properties, insbesondere deren Verhalten)
+* Schlechte Struktur der Properties: Aufwand zum Suchen
+* Flache Struktur
+
+
+Anything
+--------
+
+* ähnlich wie PropertyList
+* Erlaubt substrukturen wie z.B. das ablegen von Adresse
+	* -> Values dürfen wiederum Property List sein
+	* -> Values dürfen auch Sequenzen (Listen sein)
+	* Anything kann gleich viel wie JSON
+
+
+Einsatzgebiet
+.............
+
+* In typisierten Sprachen, wo feste Datentypen gefordert wären, kann mit Anything Flexibilität eingebracht werden
+* Konfigurationsmechanismen
+* Informationen über Schnittstellen (Compile-unabhängig)
+* Iterieren über die Struktur ist einfach
+
+.. code-block:: c
+
+	{ # array with 2 elements
+		{ # 1st array element; a /Name "Smith"
+			/Address {
+				/Country "USA"
+				/City "Palo Alto"
+				/State "CA"
+			} 
+		}
+		{ # 2nd array element 
+			/Name
+			/...
+		}
+	}
+
+ 
+.. code-block:: xml
+
+	<array> <!-- array with 2 elements -->
+		<record> <!-- 1st array element; a record-->
+			<element><key>Name</key><value>"Smith"</value></element>
+			<element><key>Address</key><value>
+			<record>
+				<element><key>Country</key><value>"USA"</value></element>
+				<element><key>City</key><value>"Palo Alto"</value></element>
+				<element><key>State</key><value>"CA"</value></element>
+			</record>
+		</record>
+		<record><!-- 2nd array element -->
+			<element><key>Name</key>
+			...
+			...
+		</record>
+	</array>
+
+
+Implementation
+..............
+
+.. image:: img/6.8.jpg
+
+
+Nachteile
+.........
+
+* Keine Compilerprüfung
+* Overhead für Zugriff
+* Keine Information darüber, ob ein Element noch benutz wird (Dangling Elements)
+
+
+Extension Interface
+-------------------
+
+.. image:: img/6.9.jpg
+
+* Basisinterface liefert Schnittstellen
+	* Aus der Komponente wird das Extensioninterface abgeholt und an den Client ausgeliefert
+
+Vorteile
+........
+
+* Komponente kann um Interfaces erweitert werden, ohne das die KLassenhirarchie angepasst werden muss
+* Es müssen nicht alle Schnittstellen in ein Interface gepackt werden
+* Interfaces können zusammengesteckt werden
+* Klassen benötigen kein generelles gemeinsames Interface
+
+
+Nachteile
+.........
+
+* Benutzung ist komplexer
+* Laufzeitoverhead / mehr Indirektion
+* Der originalen Komponente wird nicht angesehen, was sie alles kann (konnte), da die Kommunikation nur über die Interfaces läuft
+
+
+Reflection Feedback
+-------------------
+
+* Potential für "Overdose Effect"
+* Teuer in Rechenleistung
+* Speicherverbrauch
+* Gefahr der Überflexibilisierung
+* Gefahr von Zu stark konfigurierbare Strukturen
+* Gefahr von Untergraben von Funktionalität
+
+
+
+
 

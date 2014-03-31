@@ -183,6 +183,22 @@ Nennen Sie einige Sprachfeatures wie z.B. Polymorphism, die auf Reflection oder 
 Wo werden Reflectionmechanismen eingesetzt? Machen Sie ein Paar Beispiele.
 
 **5.0.8.**
-Was ist ein TypeObject?
+Erklären Sie die folgenden Patterns. Nennen Sie auch, wie es konkret umgesetzt wird, Anwendungsgebiet und Vor- und Nachteile:
+
+a) Type Object
+b) Property List
+c) Anything
+d) Extension Interface
+
+**5.0.8.**
+Wie sinnvoll ist Reflection auf Reflection? Welche Probleme gibt es?
+
+**5.0.9.**
+Welche Nachteile besitzt Reflection?
+
+**5.0.10.**
+Welche Gefahren birgt Reflection?
+
+
 
 
