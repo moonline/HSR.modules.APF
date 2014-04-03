@@ -85,3 +85,23 @@ Closure
 ✗ Zugriffsrechte nur im UI zu überprüfen ist sehr gefährlich (Security by Obscurity), insbesondere Webapplications sollten serverseitig jegliche Rechte erneut überprüfen
 
 
+
+Prüfungsfragen
+==============
+
+a) "Limited Access" lässt sich einfacher in ein bestehendes UI einpflegen, wenn UI Elemente mit dem Command Pattern umgesetzt wurden.
+
+b) "Limited Access" zeigt dem Benutzer alle Funktionen an, die nicht verfügbaren leiten ihn um zur Hauptansicht.
+
+c) Bei einem UI das nach dem Prinzip "Limited Access" umgesetzt wurde, sollte der Benutzer nie Fehlermeldungen für mangelnde Rechte für Operationen erhalten.
+
+
+
+Antworten zu den Fragen
+=======================
+
+a) Richtig. Durch die Entkoppelung ist dies einfacher.
+
+b) Falsch. Der Benutzer sieht nur verfügbare Operationen.
+
+c) Richtig. Der Benutzer sollte Operationen, für die er die Rechte nicht hat, gar nicht sehen.

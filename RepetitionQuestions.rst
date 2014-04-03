@@ -200,5 +200,35 @@ Welche Nachteile besitzt Reflection?
 Welche Gefahren birgt Reflection?
 
 
+6 Frameworkers Dilemma
+======================
+
+**6.0.1.**
+Welche Vorteile bieten Application Frameworks und welche Probleme bringen sie mit sich?
+
+**6.0.2.**
+Wie werden Frameworks verwendet? Warum ist dies ein Kopplungsproblem?
+
+**6.0.3.**
+Welche Konsequenzen hat die starke Koppelung des eigenen Codes an das Framework und die Kopplung innerhalb des Frameworks?
+
+**6.0.4.**
+Warum können sich Frameworks nur langsam weiterentwickeln?
+
+**6.0.5.**
+Welche Wege gibt es, dieses Dilemma zu mindern?
+
+**6.0.6.**
+Nennen Sie 5 Technische Lösungen, die helfen das Dilemma zu minimieren.
+
+**6.0.7.**
+Was ist das "Encapsulate Context" Pattern? Wie funktioniert es?
+
+**6.0.8.**
+Was bringen "Property Lists" in diesem Zusammenhang?
+
+**6.0.9.**
+Wie funktioniert das Extension Interface Pattern? Erklären Sie, wie das IAdaptable in Eclipse funktioniert.
+
 
 

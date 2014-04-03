@@ -752,7 +752,8 @@ Einsatzgebiet
 				/Country "USA"
 				/City "Palo Alto"
 				/State "CA"
-			} 
+			}
+
 		}
 		{ # 2nd array element 
 			/Name
@@ -829,6 +830,117 @@ Reflection Feedback
 * Gefahr der Überflexibilisierung
 * Gefahr von Zu stark konfigurierbare Strukturen
 * Gefahr von Untergraben von Funktionalität
+
+
+
+7 Frameworkers Dilemma
+======================
+
+.. image:: img/7.1.jpg
+
+
+* Frameworks: Hollywood principle (don't call us, we call you)
+* Code der Applikation ist stark an Framework gekoppelt (Vererbung / Implementation)
+* Wird das Framework geändert -> Application Code läuft nicht mehr
+
+
+Vorteile
+--------
+
+* Weniger Applicationcode / Einfacherer Code
+* Mehr Wiederverwendung
+* Modularer Code / Robuster Code
+* Einfachere Wartung
+* Produktfamilien
+
+
+Nachteile
+---------
+
+* Code eines Frameworks lässt sich kaum zu einem andern portieren
+* Hohe Kopplung
+* Bindung an Hersteller und Plattform
+* Tests umständlich
+* Lösungen
+	* Entkopplungslayer -> Overhead
+	* Eigenes Framework bauen ;-)
+* Werden nur Teile des Frameworks gebraucht, muss man trotzdem das ganze nutzen/importieren
+
+
+Intra Framework
+---------------
+
+* Coupling und lock-in innerhalb des Frameworks
+* Framework intern zu hoch gekoppelt
+* Framework ist wie ein grosser Klumpen
+* Frameworks lassen sich intern schlecht testen
+
+
+Framework lock-in
+-----------------
+
+* Anforderungen ändern sich / Fehler im Framework
+	* Framework entwickelt sich kaum weiter
+		* niemand nutzt es (keine Weiterentwicklung)
+		* all enutzen es -> Schnittstellen können nicht geändert werden
+	* Dilemma
+
+	
+Ways out of Dilemma
+-------------------
+
+* Vor dem Framework-Bau nachdenken
+	* Problem: Nachher ist man schlauer
+	* Flexibilität kann zu Unbeutzbarkeit führen
+	* Dauert ewig
+* Schnittstellen-Nutzer ignorieren und Schnittstellen dauern anpassen
+	* Nur wenn Nutzer an Anbieter gebunden sind
+	* Neue Version führt zu Portierung
+	* User laufen möglicherweise weg
+* Sozialen Prozess mit Anpassung und Feedback
+	* Depracted Interfaces -> Overhead
+	* Alten Code weiter mitpflegen
+	* Commite, das über Changes entscheidet -> Politik
+	* Schulung notwendig
+
+	
+Technische Lösungen
+...................
+
+* Schlichte einfache Interfaces -> stabiler
+* Flexible Interfaces -> stabiler
+* Konfigurierbarkeit
+* Einsatz von Patterns
+* TDD -> Sofort Opfer der Design Entscheidungen werden
+	* Tests komplizier -> Benutzung kompliziert
+* Generische Parameter für Hook Methoden
+
+
+Dynamische Parameter / Kontext Objekt
+.....................................
+
+* Problem: Of gelöst über Member -> Globale Variablen in der Klasse
+* Parameter typen sind sehr generisch -> Alles kann mitgegeben werden
+* -> Besser: Kontext Objekt, das alles mitbringt was es dazu braucht
+
+.. image:: img/7.2.jpg
+
+
+* Schnittstelle wird mit Kontextobjekt viel weniger breit -> besser lesbar, dynamischer
+
+.. note:: PropertyList als Parameter -> dynamische Parameterübergabe typenunabhängig
+
+
+Flexible Plugins
+................
+
+.. image:: img/7.3.jpg
+
+
+.. figure:: img/7.4.jpg
+
+   IAdaptable Extension Interface von Eclipse
+
 
 
 
