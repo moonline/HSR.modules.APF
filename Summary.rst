@@ -943,6 +943,283 @@ Flexible Plugins
 
 
 
+8 WAM
+=====
+
+Flexibilität einbringen in App
+------------------------------
+
+* Konfigurierbare App
+	* Komponenten (Plugins)
+	* Zusammenspiel
+* Scripting (
+	* Vorsicht mit selbst gebauten Sprachen
+	* Besser existierende Scriptsprachen verwenden!
+	
+
+Metaphern
+---------
+
+* Software sollte NIE den Meschen steuern -> unangenehm (Fabrik Metapher)
+* WAM Metapher: Experten Arbeitsplatz
+
+
+Leitbild
+--------
+
+.. figure:: img/8.1.jpg
+
+   Leitbild WAM
+
+
+* Werkzeug (Tool)
+	* -> Womit bearbeitet wird (aktiv)
+	* Materialien bearbeiten / anschauen
+	* wiederkehrende Tätigkeiten
+	* verschiedene Aufgaben
+	* wird benutzt und wieder zur Seite gelegt
+* Material
+	* -> Was bearbeitet wird (passiv)
+	* virtuelle Gegenstände
+* Arbeitsumgebung
+	* z.B. Eclipse Workspace
+	* Beinhaltet gesammten Arbeitskontext: Wo habe ich zuletzt gearbeitet? welche Files? Welche Ansichten?
+	* Individuell
+	* Vor Fremdzugriff geschützt
+	* Ein-Benutzer System: Arbeitsplatz = Arbeitsumgebung
+* Automat
+	* Routinearbeiten
+	* benutzt Materialien, liefert definiertes Resultat
+	* oft im Hintergrund
+	* Beschränkt menschliche Eingriffe
+	* Automaten werden konfiguriert, ev. gescriptet und dann gestartet.
+* Container
+	* beinhaltet, verwaltet, ordnet und liefert Materialien
+	* gleichartige oder definierte menge unterschiedlicher Objekte
+	* repräsentieren oft einen Arbeitsablauf, sammeln zugehörige Objekte
+* Fachwerte (Values)
+
+
+Patterns
+--------
+
+.. figure:: img/8.2.jpg
+
+   WAM Patterns
+
+
+Werkzeuge
+---------
+
+Trade-offs
+..........
+
+* sollten nicht zu gross werden -> überfordern / Kohäsion
+* sollte Arbeitsprozess nicht unnötig vorgeben oder reinschränken
+* Jede Teilfunktionalität eines Werkzeugs sollte jederzeit benutzbar sein
+
+
+Design Charakteristiken
+.......................
+
+* Werkzeug besitzt Identität, Gedächnis, Namen, Graphische Repräsentation
+
+
+Arbeitsumgebung
+---------------
+
+* Vernünftige Default Werte
+
+.. note:: Arbeitsplatz (Workspace) ist Teil der Arbeitsumgebung (Work Environment)
+
+
+Formulare
+---------
+
+* konzeptionell eigenständig
+* stellen spezielle Materialien dar
+* sollten konfigurierbar sein
+* Alle Formulare verhalten sich gleichartig
+
+
+Domain Service Provider
+-----------------------
+
+* neueres Konzept, wird in WAM eingebettet
+* Zentrale Sammlung von Arbeitsobjekten sind KEINE DSP!
+* Reine Funktionsbibliotheken sind KEINE DSP!
+* DSP beinhaltet Domänenwissen
+* Komplexe Zusammenhänge / Objektstrukturen, Geschäftstransaktionen
+* Materialsammlungen mit Domänenbezug
+
+
+Technische Automaten
+--------------------
+
+* Technischer Automat: Steuerung von Geräten
+	* Sonden: Zustandsabfrage für techn. Automat
+		* -> Gerätezustand wird zum Arbeitsplatz transportiert
+	* Einstellungswerkzeuge für Wartung & Steuerung
+
+
+Implementation
+--------------
+
+Werkzeug- / Materialkopplung (Aspect)
+.....................................
+
+* WZ und Mat müssen zusammenpassen
+* WZ soll ev. für mehrere Materialien eingesetzt werden
+* Jede Nutzung eines Materials stellt einen Aspekt dar
+* Aspekte sind Schnittstellen des Materials, die das Werkzeug implementiert
+
+.. note:: **SOLID**: Single Responsibility Principle , Open/Closed, Liskov Substitution Principle, Interface Aggregation Principle, Dependency Inversion Principle
+
+* Extension Interface Pattern ermöglicht das Werkzeug später zu erweitern
+* Werkzeug wird gegen ein- oder mehrere Interfaces programmiert
+* Matrialien können gleiche wie verschiedene Interfaces anbieten
+* -> Werkzeug fügt sich den Schnittstellen, die das Material zur Verfügung stellt
+* Nicht zu viele Interfaces am Anfang erstellen -> Abspalten von Interfaces ist später einfach (Rafactoring)
+
+.
+
+.. figure:: img/8.3.jpg
+   :width: 80 %
+
+   Aspekte über Vererbung
+
+
+* Vererbung ermöglicht, im generischen Aspekt schon Logik zu implementieren / vorzugeben. Interfaces bieten diese Möglichkeit nicht.
+* Problem Vererbung: Viele Sprachen bieten keine Mehrfachvererbung
+
+.
+
+.. figure:: img/8.4.jpg
+   :width: 80 %
+   
+   Aspekte über Adapter oder Decorator (Delegation, unten rechts, da das Material die Impl. delegiert statt davon zu erben) -> Adapter Pattern ersetzt Vererbung
+
+
+.. figure:: img/8.5.jpg
+   :width: 50 %
+
+   Decorator Example (Flipchart), Schwarz: Decorator grundprinzip, Rot: Decorator mit Interface (IF), Material (M), Materialdekoration (DecM)
+   
+
+* Problem Decorator: Aufrufendes Objekt sieht eingewickeltes Objekt nicht
+
+.. warning:: Decorator und Adpater kommen in Prüfung
+
+
+Trennung von Funktion und Interaktion
+.....................................
+
+* Funktion lässt sich unabhängig vom UI testen
+* MVC / MVVM / MV*
+* UI Model, das das UI für die Ausgabe benutzt
+* Separat testbar
+* Wenn nur wenig Logik vorhanden ist, ist es nicht sinnvoll ein Viewmodel etc. zu erstellen -> Trennen sobald App wächst
+
+
+Werkzeuge
+.........
+
+* Werkzeuge zusammensetzen aus Teilfunktionalität
+* Composite Pattern oder Whole Part Pattern
+
+.
+
+.. figure:: img/8.6.jpg
+   :width: 80 %
+   
+   Werkzeugkomposition
+
+
+.. note:: Steht im Diagramm bei der Beziehung eine 1, so ist es Decorator, steht ein stern, so ist es Composite
+
+
+.. figure:: img/8.7.jpg
+   :width: 80 %
+   
+   Feedback (Observer)
+   
+   
+.. figure:: img/8.8.jpg
+   :width: 80 %
+   
+   Rückkopplung zwischen Funktion und Interaktion
+
+
+.. figure:: img/8.9.jpg
+   :width: 80 %
+   
+   Feedback FK-IAK
+
+
+.. figure:: img/8.10.jpg
+   :width: 80 %
+   
+   Trennung von Handhabung und Repräsentation
+
+
+Fachliche Behälter
+..................
+
+* Oft mehr als nur ein Vektor oder ein Set
+* Resourcen laden: lazy loading / eager loading
+* Werkzeuge können auch direkt auf Behältern Funktionen ausführen
+
+
+Formulare
+.........
+
+.. figure:: img/8.11.jpg
+
+   Formularsystem (Composite Pattern da * Beziehung)
+
+
+* Nicht übertreiben -> Interaktion von Formularsystem ist begrenzt
+* Kann Materialkonzept untergraben
+
+
+Automaten in Embedded Systems
+.............................
+
+.. figure:: img/8.12.jpg
+
+   Entkoppelung: Asynchrone Anbindung
+
+
+* Alternative: Broker einsatz
+
+
+Domain Services
+...............
+
+* Übers Netz werden nur Werte, keine Objekte übertragen
+* -> Wertorientierte Schnittstellen
+* Kapselt Material und Implementierung
+* Braucht ev. Session Konzepte, Authorisierung, Rollen
+* Multiuser konzepte
+
+
+WAM Service Architektur
+.......................
+
+.. figure:: img/8.14.jpg
+
+   Dargestellt: eigentlich Tiers, keine Layers
+
+
+Environment (Arbeitsumgebung)
+.............................
+
+* Eine einzige Klasse
+* Beinhaltet Workspace Konzept
+	* Vorgaben für Materialien und Werkzeuge
+	* Schablonen
+
+.. figure:: img/8.15.jpg
 
 
 

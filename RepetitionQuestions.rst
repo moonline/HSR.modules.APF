@@ -232,3 +232,90 @@ Wie funktioniert das Extension Interface Pattern? Erklären Sie, wie das IAdapta
 
 
 
+7 WAM
+=====
+
+**7.0.1.**
+Was ist WAM? Was bedeutet es und wozu wird es benutzt?
+
+**7.0.2.**
+Was sind Knowledge Worker?
+
+**7.0.3.**
+Welches Leitbild steckt hinter WAM?
+
+**7.0.4.**
+Erklären Sie die folgenden Begriffe bezüglich WAM und das Konzept, das damit umgesetzt wird.
+
+a) Material
+b) Werkzeug
+c) Arbeitsumgebung
+d) Automat
+e) Container
+
+**7.0.5.**
+Wie interagieren die folgenden Elemente (miteinander)?
+
+a) Werkzeug und Material
+b) Werkzeugentwurf
+c) Materialentwurf
+
+**7.0.6.**
+Nennen Sie die Trade-offs und Design Charakeristiken von Werkzeugen.
+
+**7.0.7.**
+Was stellt die Arbeitsumgebung bereit und was sind Aufgaben und Rollen?
+
+**7.0.8.**
+Wozu dienen Formulare? Warum besteht bei einem generalisierten Formularsystem die gefahr, das das ganze System mit Formularen aufgebaut wird?
+
+**7.0.9.**
+Wie unterscheiden sich Werkzeug und Automat?
+
+
+7.1 Umsetzung
+-------------
+
+**7.1.1.**
+Wie wird die Werkzeug-/Materialkopplung umgesetzt? Zu welchen Abhängigkeiten führt dies?
+
+**7.1.2.**
+[DP] Wie unterscheiden sich Composite und Decorator Pattern?
+
+**7.1.3.**
+Stellen Sie die Varianten "Aspekte über Vererbung" und Aspekte über Adapter oder Decorator" einander gegenüber. Welche Vererbungsbeziehung wird beim Zweiteren mit einer Delegation ersetzt?
+
+**7.1.4.**
+Wie wird Funktion und Interaktion getrennt? Wozu?
+
+**7.1.5.**
+[DP] Wie baut man komplexe Werkzeuge, die aus einfacheren zusammengesetzt sind?
+
+**7.1.6.**
+Wie ist die Rückkoppelung zwischen Funkton und Interaktion aufgebaut?
+
+**7.1.7.**
+Was ist "Feedback FK-IAK"?
+
+**7.1.8.**
+Wie werden Handhabung und Präsentation getrennt?
+
+**7.1.9.**
+Welche Möglichkeiten gibt es, um Fachwerte (Values) zu implementieren?
+
+**7.1.10.**
+Wie werden fachliche und technische Behälter umgesetzt? Wie funktioniert das Laden von Objekten?
+
+**7.1.11.**
+Wie werden Formularsysteme aufgebaut? Wozu sollten Sie verwendet werden, und wozu nicht?
+
+**7.1.12.**
+[DP] Wie kann man ein Embedded System mit einem technischen Automat an ein WAM Anwendungssyszem koppeln?
+
+**7.1.13.**
+Wie werden Domain Services umgesetzt? Wie sieht die Service Architektur aus?
+
+**7.1.14.**
+Wie wird das Environment umgesetzt?
+
+
