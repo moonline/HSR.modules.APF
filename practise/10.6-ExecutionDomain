@@ -1,0 +1,68 @@
+=====================
+10.6 Execution Domain
+=====================
+
+
+Nicht authentisierte Prozesse können Daten verändern oder zerstören. Die Definition von Ausführungsumgebungen verhindert Kollisionen zwischen Prozessen und unerlaubten Datenzugriff.
+
+
+Context
+=======
+
+Prozesse laufen als Benutzer einer Gruppe und besitzen Zugriffsrechte auf Resourcen. "Execution Domain" bezeichnet das Set an Zugriffsberechtigungen, die ein Prozess besitzt.
+
+
+Problem
+=======
+
+* Prozesse müssen in ihrem Resourcenzugriff kontrolliert und eingeschränkt werden
+* Prozesse, die unerlaubterweise auf Resourcen zugreifen können Daten zerstören oder verändern
+* Auch Hauptspeicher und I/O Geräte sind Resourcen und müssen eingeschränkt werden -> Resourcen sind heterogen
+* Prozesse müssen die Flexibilität besitzen, verschiedene Domänen erstellen zu können
+
+
+Solution
+========
+
+Dem Prozess, der die Rechte the prozesses repräsentiert wird ein Set an Deskriptoren angehängt. Diese werden in eine Execution Domain zusammengefasst, welche wiederum verschachtelt werden können.
+
+
+.. figure:: img/10.6.1.jpg
+
+   Jeder Prozess wird in einer oder mehreren Umgebungen ausgeführt
+
+
+Closure
+=======
+
+✔ "Least privilege" ist möglich (Jeder Prozess erhält nur was er wirklich braucht)
+
+✔ Jegliche Art von Resource kann beschrieben werden, auch verschachtelte oder memory mapped Resources
+
+✔ Die Implementation ist nicht auf eine bestimmte Art eingeschränkt
+
+✗ Erhöhung der Komplexität
+
+✗ Performance Overhead durch das Eintreten und Verlassen von Domains
+
+✗ Die genaue Umsetzung hängt stark vom Zielsystem ab
+
+
+Prüfungsfragen
+==============
+
+a) Execution Domain bezeichnet ein Set an Hosts, auf denen ein verteilter Prozess ausgeführt werden darf
+
+b) Execution Domains können verschachtelt sein
+
+c) Execution Domains können jegliche Art von Resource repräsentieren, auch I/O Geräte
+
+
+Antworten zu den Fragen
+=======================
+
+a) falsch
+
+b) richtig
+
+c) richtig

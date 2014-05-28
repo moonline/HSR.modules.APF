@@ -1,0 +1,71 @@
+==================
+10.1 Authenticator
+==================
+
+
+Authenticator überprüft, ob ein Subjekt dasjenige ist, was es vorgibt zu sein.
+
+
+Context
+=======
+
+Systeme mit beschränktem Zugang, die Benutzer authentisieren um sie einloggen zu können.
+
+
+Problem
+=======
+
+* Angreifer versuchen, sich hinter einer fremden Identität zu verstecken
+* Benutzer müssen auf verschiedene Arten authentisiert werden
+* Die Authentisierung muss nachvollziehbar und wiederholbar sein
+* Das Resultat der Authentication muss ebenfalls geschützt werden -> Ansonsten können User die Authentisierung skippen
+* Kosten und Sicherheit stehen einandern gegenüber
+
+
+Solution
+========
+
+Einen "Single Access Point" einsetzen für die Interaktion mit dem Benutzer und ein Protokoll einsetzen, das die Benutzeridentität überprüft, z.B. indem es den Benutzer um Geheiminformation fragt, die nur er kennt.
+
+
+Structure
+---------
+
+.. figure:: img/10.1.1.jpg
+
+   Authentication Information: Liste von Usern, die mit den Angaben des einzuloggenden Users verglichen wird
+
+
+Dynamics
+--------
+
+.. figure:: img/10.1.2.jpg
+
+
+Variants
+--------
+
+* SSO: Single Sign On: ermöglicht die Benutzer des Resultates der Authentisierung über Domain- und Servicegrenzen hinweg.
+
+
+Closure
+=======
+
+✔ Unterschiedliche Arten von Benutzer können mit verschiedenen Authentisierungsarten genutzt werden
+
+✔ Unterschiedliche Algorithmen, Protokolle und Verschlüsselungsstärken können zum Einsatz kommen
+
+✔ Es kann eine "Proof of Identitiy" erstellt werden, um effizienter auf die Benutzeridentität zugreifen zu können
+	
+✗ Mit dem Sicherheitslevel steigten auch Kosten und Komplexität des Systems
+
+
+Verwandte und verwenete Patterns
+================================
+
+* Verwendete:
+	* Single Access Point
+* Verwandte:
+	* Distributed Authenticator
+	* Single Sign On
+

@@ -1222,4 +1222,179 @@ Environment (Arbeitsumgebung)
 .. figure:: img/8.15.jpg
 
 
+9 Unit Testing Frameworks
+=========================
+
+.. warning:: An der Prüfung Factory Methoden erkennen können. z.B. createTestResult(), ...
+
+
+10 Parallel Programmning
+========================
+
+.. figure:: img/10.1.jpg
+
+* Single Instruction Single Data SISD: unten links (nicht parallel)
+* Single Instruction Multiple Data SIMD: unten rechts (GPU , Vektor-Instruktionen
+* Multiple Instruction Single Data MISD: oben rechts (selten)
+* Multiple Instruction Multiple Data MIMD: oben links (Core i)
+
+.
+
+figure:: img/10.2.jpg
+
+
+Task Decomposition
+------------------
+
+* Zerlegen der Aufgabe in Häppchen, die parallel ausgeführt werden können.
+* Taskzerlegung: Nur Aufgaben, die unabhängig sind können parallel ausgeführt werden.
+* Zerlegung benötigt mehr Rechenzeit, wird durch parallelisierung wieder eingespart
+* Viele Schleifendurchläufe mit vielen Daten: Sind die Durchläufe unabhängig, so können diese Häppchenweise parallelisiert werden
+
+
+Data decomposition
+------------------
+
+* Daten aufteilen, z.B. Bildhälften sepparat berechnen
+* Bäume / Grafen sind schwierig zu parallelisieren
+* z.B. Matrixmultiplikation, Wetter Vorhersage, Multimedia processing
+
+.
+
+.. figure:: img/10.3.jpg
+
+
+Data Sharing
+------------
+
+* Daten aufteilen in read-only, local to one task, read-write
+* vermeiden von race conditions, synchronisation, kommunikationsoverhead
+
+
+.. figure:: img/10.4.jpg
+
+   Organized by tasks?
+
+
+.. figure:: img/10.5.jpg
+
+   Organized by data?
+
+
+.. figure:: img/10.6.jpg
+
+   Oragnized by ordering?
+   
+
+.. figure:: img/10.7.jpg
+
+   Pipelining
+
+   
+   
+11 Flyweight & Singleton
+========================
+
+Flyweight
+---------
+
+* Hoher Speicherverbrauch weil viele Objekte
+* Zustand eines Objektes befindet sich ausserhalb
+* -> Ermöglicht wenige shared Objekte
+* Intrinsic State: Das, was bei den Objekten variieren kann
+
+.. note:: Objekt: Wird definiert durch Identität, State und Verhalten
+
+* Objektidentität spielt keine Rolle: Value Object
+* Objektidentiät und State spielen keine Rolle: Library
+
+.. note:: Unshared Concrete Flyweight: Objekte ausserhalb des Patterns (normale Objekte), 
+   die das Flyweightpatter implementieren
+
+   
+.. figure:: img/11.1.jpg
+
+
+Flyweight Konsequenzen
+......................
+
+* Extrahieren des State spart Speicherplatz
+* Speicherplatzeinsparung Systemanhängig
+* Mehr Sharing -> Mehr Speicherplatzeinsparung
+
+
+Overweight or Underweight?
+..........................
+
+* Sharing Objekte müssen read only sein
+* Flyweight beinhaltet Immutalbe Value, Factory Method und Pooling
+
+.. note:: Immutable Value: State wird bei Erzeugung gesetzt, wenn das Objekt geändert wird, wird
+   das Objekt kopiert (Java: String).
+   
+.. figure:: img/11.2.jpg
+   :width: 75 %
+
+   Arten von Factories
+
+
+.. figure:: img/11.3.jpg
+
+   Flyweight Reconstructed
+
+
+.. figure:: img/11.4.jpg
+
+   Locking Categories
+
+
+
+Singleton
+---------
+
+* Hauptproblem: Globaler Zugriff
+
+
+Lösungen
+........
+
+* Komponente der Klasse mitgeben, die mir die benötigte Komponente zurückgeben kann
+
+
+.. note:: Monostate: Singleton, dessen State als static attributes abgelegt ist und jede Instanz diese verwendet. 
+   Methoden greifen auf static Attribute zu. Ist transarent, Singleton kann ohne getInstance() verwendet werden, 
+   sieht aus wie ein normales Objekt.
+
+
+CRTP
+....
+
+.. figure:: img/11.5.jpg
+
+.. figure:: img/11.6.jpg
+
+
+CRTP limitiert die Anzah existierender Instanzen, löst jedoch die Probleme vom Singleton 
+(beim Destructor werden Instanzen wieder freigegeben).
+
+
+Refactored Singleton
+....................
+
+.. figure:: img/11.7.jpg
+
+   Singleton erbt alle Nachteile der andern Patterns
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,0 +1,63 @@
+=====================================
+10.5 Controlled Virtual Address Space
+=====================================
+
+"Controlled Virtual Address Space" beschreibt wie der Zugriff verschiedener Prozesse auf den Virtuellen Adressraum kontrolliert werden kann.
+
+
+Context
+=======
+
+Multiprogrammsysteme mit verschiedenen Prozessen verschiedenster User. Prozesse teilen sich Speicher und jeder Prozess besitzt auch eigenen Speicher.
+
+
+Problem
+=======
+
+* Prozesse müssen beim Speicherzugriff kontrolliert werden, da sie sonst fremden Speicher überschreiben oder Informationen auslesen können
+* Prozesse, die auf fremden Speicher zugreifen können, können sich selbst höhere Prioritäten zuteilen
+* Jeder Prozess sollte seinen eigenen Bereich haben (Segment)
+* Virtueller Adressraum kann nach verschiedenen Prinzipien organisiert sein
+* Um effizient Speicher verwalten zu können, muss die Hardware genutzt werden können
+
+
+Solution
+========
+
+Der virtuelle Adressraum wird in Segmente aufgeteilt. Zugriff erfolg über definierte Befehl, sodas das System die Möglichkeit hat, zu kontrollieren, ob der Zugriff innerhalb oder ausserhalb des erlaubten Bereiches stattfindet. Dazu besitzt jedes Segment eine Startadresse, eine Länge und die berechtigte Zugriffsart (r/w/x).
+
+
+.. figure:: img/10.5.1.jpg
+
+   Jeder Prozess besitzt einen Deskriptor, der mit einem Segment verknüpft ist
+
+
+Implementation
+--------------
+
+* Die Adressüberprüfung muss durch Microcode (Maschinensprache) umgesetzt werden um erträgliche Performance zu erreichen
+* Einfache Paging Systeme funktionieren nach ähnlichen Prinzipien
+* Umsetzungsvarianten:
+	* Property Description Systems: Die Deskriptoren werden zur Prozesserstellung geladen und werden durch spezielle Register verwaltet
+	* Capability System: Eine vertrauenswürdige Komponente des Betriebsystems teilt diesen deren Möglichkeiten zu. Diese werden in speziellen Registern oder Speicherbereichen des HS abgelegt.
+
+
+Closure
+=======
+
+✔ Prozesse können nur in ihren Speicherbereich zugreifen, da der Zugriff kontrolliert wird
+
+✔ Der Ansatz funktioniert mit verschiedenen Arten von virtuellen Speicher.
+
+✔ Werden alle Resourcen, inkl. Dateien, gemappt, so kann das Betriebssystem sämmtliche Resourcenzugriffe kontrollieren.
+
+✗ Segmentation verschlechtert die Memoryausnutzung
+
+✗ Hardwareunterstützung ist notwendig
+
+
+
+
+
+
+
