@@ -1108,6 +1108,8 @@ Werkzeug- / Materialkopplung (Aspect)
 
 * Problem Decorator: Aufrufendes Objekt sieht eingewickeltes Objekt nicht
 
+.. note:: Unterschied Adapter/Decorator: Adapter verändert Schnittstelle exitierender Objekte, Decorator erweitert Verhalten gleichartiger Objekte
+
 .. warning:: Decorator und Adpater kommen in Prüfung
 
 
